@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Origin of SAMAP</title>
+<meta name="description" content="A security advance in October 2000, a grid reference on an image, and the idea that became SAMAP.">
+<link rel="canonical" href="https://baseaware.com/origin.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap">
+<style>
+  :root{
+    --ground:#F4F3F0;
+    --surface:#FBFAF8;
+    --surface-2:#EDECE8;
+    --ink:#16191C;
+    --ink-2:#4C5254;
+    --ink-3:#7C8181;
+    --rule:#D0CEC8;
+    --rule-soft:#E6E4DE;
+    --brand:#3D6A68;
+    --accent:#3D6A68;
+    --focus:#3D6A68;
+
+    --f-display:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+    --f-body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+    --f-mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+
+    --gutter:clamp(20px,5vw,72px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#16191C;
+      --surface:#1C2023;
+      --surface-2:#1A1E21;
+      --ink:#E8E6E0;
+      --ink-2:#BFBDB8;
+      --ink-3:#8B9191;
+      --rule:#383D40;
+      --rule-soft:#282D30;
+      --brand:#7FB0AD;
+      --accent:#7FB0AD;
+      --focus:#7FB0AD;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#16191C;
+    --surface:#1C2023;
+    --surface-2:#1A1E21;
+    --ink:#E8E6E0;
+    --ink-2:#BFBDB8;
+    --ink-3:#8B9191;
+    --rule:#383D40;
+    --rule-soft:#282D30;
+    --brand:#7FB0AD;
+    --accent:#7FB0AD;
+    --focus:#7FB0AD;
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--ground);color:var(--ink);
+    font-family:var(--f-body);font-size:17.5px;line-height:1.68;
+    font-weight:400;-webkit-font-smoothing:antialiased;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  img{max-width:100%}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:2px}
+
+  .wrap{max-width:1140px;margin:0 auto;padding-inline:var(--gutter)}
+  .eyebrow{
+    font-family:var(--f-mono);font-size:11px;font-weight:500;
+    letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);margin:0;
+  }
+
+  /* header */
+  .site-head{
+    position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+    background:color-mix(in srgb,var(--ground) 92%, transparent);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--rule-soft);
+  }
+  .head-in{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:66px;flex-wrap:wrap}
+  .mark{display:flex;align-items:center;gap:13px;text-decoration:none;padding-block:12px;color:var(--ink)}
+  .mark-glyph{width:34px;height:21px;flex:none;display:block}
+  .mark-txt{font-family:var(--f-display);font-weight:700;font-size:15.5px;letter-spacing:-0.005em}
+  .back{
+    font-family:var(--f-display);font-size:14px;font-weight:500;text-decoration:none;
+    color:var(--ink-2);padding-block:4px;border-bottom:1.5px solid transparent;
+  }
+  .back:hover{color:var(--ink);border-bottom-color:var(--accent)}
+
+  /* article */
+  article{padding-block:clamp(44px,7vw,84px) clamp(48px,7vw,96px)}
+  .measure{max-width:70ch;margin:0 auto}
+  h1{
+    font-family:var(--f-display);font-weight:600;
+    font-size:clamp(30px,4.6vw,50px);line-height:1.1;letter-spacing:-0.02em;
+    text-wrap:balance;margin:16px 0 0;
+  }
+  .byline{
+    display:flex;flex-wrap:wrap;gap:6px 20px;align-items:baseline;
+    margin-top:26px;padding-top:18px;border-top:1px solid var(--rule);
+    font-family:var(--f-mono);font-size:12px;color:var(--ink-3);letter-spacing:0.03em;
+  }
+  .byline b{color:var(--ink-2);font-weight:500}
+
+  .body{margin-top:clamp(28px,4vw,44px)}
+  .body p{margin:0 0 1.15em}
+  .body p:last-child{margin-bottom:0}
+  .body p.lead{font-size:1.06em}
+  .body em{font-style:italic}
+
+  .standout{
+    margin:1.9em 0;padding:0 0 0 22px;
+    border-left:2px solid var(--accent);
+    font-size:1.12em;line-height:1.5;color:var(--ink);
+    font-weight:500;text-wrap:balance;
+  }
+
+  .endnote{
+    margin-top:clamp(34px,4vw,48px);padding-top:22px;
+    border-top:1px solid var(--rule);
+    font-family:var(--f-mono);font-size:12px;color:var(--ink-3);
+    display:flex;flex-wrap:wrap;gap:8px 26px;
+  }
+  .endnote a{color:var(--brand);text-decoration:none;border-bottom:1px solid var(--rule)}
+  .endnote a:hover{border-bottom-color:var(--accent)}
+
+  footer{padding-block:34px 42px;background:var(--surface-2);margin-top:0}
+  .foot-in{display:flex;flex-wrap:wrap;gap:20px 48px;justify-content:space-between;align-items:flex-start}
+  .foot-legal{font-family:var(--f-mono);font-size:11px;color:var(--ink-3);line-height:1.8}
+  .foot-back{font-family:var(--f-mono);font-size:12px;color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:2px}
+  .foot-back:hover{color:var(--ink);border-bottom-color:var(--accent)}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="mark" href="index.html">
+      <svg class="mark-glyph" viewBox="0 0 325 200" aria-hidden="true" fill="currentColor">
+        <rect x="0" y="186" width="325" height="14" rx="1"/>
+        <rect x="17.5" y="118" width="13" height="68" rx="1"/>
+        <rect x="61.5" y="118" width="13" height="68" rx="1"/>
+        <rect x="105.5" y="118" width="13" height="68" rx="1"/>
+        <rect x="156" y="2" width="13" height="184" rx="1"/>
+        <rect x="206.5" y="118" width="13" height="68" rx="1"/>
+        <rect x="250.5" y="118" width="13" height="68" rx="1"/>
+        <rect x="294.5" y="118" width="13" height="68" rx="1"/>
+      </svg>
+      <span class="mark-txt">Baseline Awareness</span>
+    </a>
+    <a class="back" href="index.html">← Back to baseaware.com</a>
+  </div>
+</header>
+
+<main>
+  <article class="wrap">
+    <div class="measure">
+      <p class="eyebrow">Origin</p>
+      <h1>The Origin of SAMAP</h1>
+      <p class="byline">
+        <span><b>Brad Spicer</b></span>
+        <span>Published September 14, 2026</span>
+      </p>
+
+      <div class="body">
+        <p class="lead">On October 19, 2000, I was on the Governor's Detail working with the US Secret Service Advance Team, ahead of a visit from President Bill Clinton and Vice President Al Gore. POTUS and VPOTUS were coming to attend the funeral of Missouri Governor Mel Carnahan, who had died days earlier along with his son Randy and aide Chris Sifford in a plane crash. The state funeral was held the next day, October 20, 2000, on the South Lawn of the Missouri Capitol.</p>
+
+        <p>During that advance, I was introduced to the concept of applying a grid reference to an image — a way of breaking a physical space down into referenceable coordinates so that anyone communicating about that space could point to the exact same location without ambiguity. Think a sniper/observer needing to direct an agent on the ground to check on a JDLR (Just Don't Look Right) person in a large and crowded venue. The map reference gives the agent on the ground a firm destination without having to orient north/south/east/west or rely on a landmark they may not see.</p>
+
+        <p class="standout">It was a simple idea, and it stuck with me.</p>
+
+        <p>They didn't keep those maps to themselves. The advance team shared versions with collaborating agencies being used for observation positions — the Missouri State Highway Patrol, the Cole County Sheriff's Department, Jefferson City Police Department, and the Missouri Capitol Police. Everyone on the ground was speaking the same location language.</p>
+
+        <p>Less than a year later, September 11th happened. Like a lot of people in public safety, I spent the following months and years thinking hard about what had gone wrong that day — not just strategically, but operationally. One of the recurring lessons was interoperable communications. The deeper I looked at it, the more I realized interoperability wasn't just a technology problem — radios that couldn't talk to each other. It was being able to efficiently communicate. Even when people could communicate, they often couldn't describe <em>where</em> quickly or precisely enough. The grid concept I'd learned on that advance in Jefferson City was, in hindsight, a piece of that answer — a way to relay location information rapidly, regardless of who you were or where you were standing.</p>
+
+        <p>I carried that idea forward. As I built SafePlans, I developed it into what became ERIP — a platform where site maps weren't just static documents, but grid-referenced, generated dynamically, securely available online, and exportable as a PDF. ERIP was later recognized under the Department of Homeland Security's SAFETY Act as designated antiterrorism technology.</p>
+
+        <p class="standout">That's the origin. Not a market analysis, not a whiteboard session — a security advance in October 2000.</p>
+
+        <p>I sold SafePlans in 2019. Since then I've been looking at better ways to improve response — from the human side, preparing the first officer on the scene of an active shooter to actually engage, to the technology side. That technology thread runs straight back to the presidential site advance team on October 19, 2000.</p>
+
+        <p>Today that same grid-referencing concept lives on in SAMAP — Situational Awareness Map. Upload an aerial photo and a floor plan, drag them into alignment, drop in the icons that matter, overlay a Smart Grid, and export a clean PDF everyone can actually read. No GIS training. No guesswork.</p>
+
+        <p><strong>SAMAP is coming soon.</strong></p>
+      </div>
+
+      <div class="endnote">
+        <span>Baseline Awareness LLC</span>
+        <a href="index.html#technology">More on SAMAP</a>
+      </div>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <a class="foot-back" href="index.html">← baseaware.com</a>
+    <p class="foot-legal">
+      © 2026 Baseline Awareness LLC<br>
+      baseaware.com
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Baseline Awareness develops training and technology for schools, law enforcement, and the agencies that support them. Raise the baseline. Enhance readiness.">
+<meta property="og:title" content="Baseline Awareness">
+<meta property="og:description" content="Raise the baseline. Enhance readiness.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://baseaware.com/">
+<link rel="canonical" href="https://baseaware.com/">
+<title>Baseline Awareness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap">
+<style>
+  /* Palette and type inherited from the SAMAP / Baseline Awareness identity system. */
+  :root{
+    --ground:#F4F3F0;
+    --surface:#FBFAF8;
+    --surface-2:#EDECE8;
+    --ink:#16191C;
+    --ink-2:#4C5254;
+    --ink-3:#7C8181;
+    --rule:#D0CEC8;
+    --rule-soft:#E6E4DE;
+    --brand:#3D6A68;
+    --brand-soft:#3D6A68;
+    --accent:#3D6A68;
+    --focus:#3D6A68;
+
+    --f-display:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+    --f-body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+    --f-mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+
+    --measure:66ch;
+    --gutter:clamp(20px,5vw,72px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#16191C;
+      --surface:#1C2023;
+      --surface-2:#1A1E21;
+      --ink:#E8E6E0;
+      --ink-2:#BFBDB8;
+      --ink-3:#8B9191;
+      --rule:#383D40;
+      --rule-soft:#282D30;
+      --brand:#7FB0AD;
+      --brand-soft:#7FB0AD;
+      --accent:#7FB0AD;
+      --focus:#7FB0AD;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#16191C;
+    --surface:#1C2023;
+    --surface-2:#1A1E21;
+    --ink:#E8E6E0;
+    --ink-2:#BFBDB8;
+    --ink-3:#8B9191;
+    --rule:#383D40;
+    --rule-soft:#282D30;
+    --brand:#7FB0AD;
+    --brand-soft:#7FB0AD;
+    --accent:#7FB0AD;
+    --focus:#7FB0AD;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--ink);
+    font-family:var(--f-body);
+    font-size:16.5px;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--f-display);font-weight:600;text-wrap:balance;margin:0;letter-spacing:-0.015em;line-height:1.14}
+  p{margin:0}
+  :focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:2px}
+
+  .wrap{max-width:1140px;margin:0 auto;padding-inline:var(--gutter)}
+
+  .eyebrow{
+    font-family:var(--f-mono);font-size:11px;font-weight:500;
+    letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);
+  }
+
+  /* ---------- header ---------- */
+  .site-head{
+    position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+    background:color-mix(in srgb,var(--ground) 92%, transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--rule-soft);
+  }
+  .head-in{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:66px;flex-wrap:wrap}
+  .mark{display:flex;align-items:center;gap:13px;text-decoration:none;padding-block:12px;color:var(--ink)}
+  .mark-glyph{width:34px;height:21px;flex:none;display:block}
+  .mark-txt{font-family:var(--f-display);font-weight:700;font-size:15.5px;letter-spacing:-0.005em;color:var(--ink)}
+  .mark-txt span{font-weight:700}
+
+  /* hero lockup */
+  .hero-lockup{display:flex;flex-direction:column;gap:14px;margin-bottom:8px}
+  .hero-glyph{width:clamp(78px,9vw,104px);height:auto;display:block;color:var(--ink);margin-bottom:6px}
+  .glyph-note{
+    font-family:var(--f-mono);font-size:11.5px;letter-spacing:0.03em;
+    color:var(--ink-3);max-width:46ch;line-height:1.7;
+  }
+  nav.top{display:flex;align-items:center;gap:26px;flex-wrap:wrap;padding-block:10px}
+  nav.top a{
+    font-family:var(--f-display);font-size:14px;font-weight:500;
+    text-decoration:none;color:var(--ink-2);padding-block:4px;
+    border-bottom:1.5px solid transparent;
+  }
+  nav.top a:hover{color:var(--ink);border-bottom-color:var(--accent)}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    border-bottom:1px solid var(--rule);
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:
+      linear-gradient(to right, var(--rule-soft) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--rule-soft) 1px, transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:linear-gradient(to bottom, #000 0%, transparent 82%);
+    mask-image:linear-gradient(to bottom, #000 0%, transparent 82%);
+    opacity:.85;
+  }
+  .hero-in{position:relative;padding-block:clamp(56px,9vw,104px) clamp(48px,7vw,80px)}
+  .hero h1{
+    font-size:clamp(30px,4.6vw,52px);
+    max-width:20ch;margin-top:18px;
+  }
+  .hero .lede{
+    font-size:clamp(17px,1.7vw,20px);color:var(--ink-2);
+    max-width:56ch;margin-top:22px;
+  }
+  .hero-meta{
+    display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:34px;
+    padding-top:20px;border-top:1px solid var(--rule);max-width:56ch;
+  }
+  .hero-meta span{font-family:var(--f-mono);font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3)}
+  .hero-meta b{color:var(--ink-2);font-weight:500}
+
+  /* ---------- sections ---------- */
+  section{border-bottom:1px solid var(--rule)}
+  .sec{padding-block:clamp(52px,7vw,88px)}
+  .sec-head{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);
+    gap:clamp(20px,4vw,56px);align-items:start;margin-bottom:clamp(34px,4vw,52px);
+  }
+  .sec-head h2{font-size:clamp(23px,2.9vw,33px);margin-top:12px}
+  .sec-head .blurb{color:var(--ink-2);max-width:var(--measure)}
+
+  /* ---------- offering list ---------- */
+  .items{display:grid;gap:0;border-top:1px solid var(--rule)}
+  .item{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);
+    gap:clamp(14px,4vw,56px);
+    padding-block:clamp(26px,3.4vw,38px);
+    border-bottom:1px solid var(--rule-soft);
+  }
+  .item:last-child{border-bottom:0}
+  .item-id{display:flex;flex-direction:column;gap:9px}
+  .item h3{font-size:clamp(19px,2.1vw,23px)}
+  .item .dom{
+    font-family:var(--f-mono);font-size:12px;color:var(--brand-soft);
+    text-decoration:none;border-bottom:1px solid transparent;width:fit-content;
+  }
+  a.dom:hover{border-bottom-color:var(--accent)}
+  .foot-brands .brand-soon{
+    font-family:var(--f-mono);font-size:12px;color:var(--ink-3);
+    border-bottom:1px solid var(--rule-soft);padding-bottom:2px;
+  }
+  .item p{color:var(--ink-2);max-width:var(--measure)}
+  .item p + p{margin-top:13px}
+  .item .steps + p{margin-top:16px}
+  .tag{
+    display:inline-flex;align-items:center;gap:7px;width:fit-content;
+    font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.11em;text-transform:uppercase;
+    color:var(--ink-3);
+  }
+  .tag::before{content:"";width:6px;height:6px;flex:none;background:var(--accent);border-radius:50%}
+  .tag.live::before{background:var(--brand-soft)}
+  .spec{
+    font-family:var(--f-mono);font-size:11px;letter-spacing:0.06em;
+    color:var(--ink-3);
+  }
+  /* story excerpt — set apart so it doesn't read as product copy */
+  .excerpt{
+    margin-top:20px;padding:18px 0 0;
+    border-top:1px solid var(--rule);
+    max-width:var(--measure);
+  }
+  .excerpt p{font-size:14.5px;line-height:1.62;color:var(--ink-3)}
+  .excerpt p.eyebrow{
+    font-size:11px;color:var(--ink-2);margin-bottom:10px;line-height:1.4;
+  }
+  .excerpt p + p{margin-top:10px}
+  .keep-reading{
+    display:inline-block;margin-top:13px;
+    font-family:var(--f-display);font-weight:600;font-size:14px;
+    color:var(--brand);text-decoration:none;
+    border-bottom:1.5px solid var(--rule);padding-bottom:2px;
+  }
+  .keep-reading:hover{border-bottom-color:var(--accent)}
+
+  /* ACT sequence — ordered because the protocol is ordered */
+  .steps{
+    list-style:none;margin:16px 0 0;padding:0;
+    display:grid;gap:0;border-top:1px solid var(--rule-soft);
+    max-width:var(--measure);
+  }
+  .steps li{
+    display:grid;grid-template-columns:86px minmax(0,1fr);
+    gap:4px 18px;align-items:baseline;
+    padding-block:12px;border-bottom:1px solid var(--rule-soft);
+  }
+  .step-w{
+    font-family:var(--f-display);font-weight:600;font-size:14.5px;
+    color:var(--brand);letter-spacing:0.01em;
+  }
+  .step-d{color:var(--ink-2);font-size:15.5px;line-height:1.55}
+  @media (max-width:540px){
+    .steps li{grid-template-columns:1fr;gap:3px}
+  }
+
+  /* ---------- publications ---------- */
+  .pubs{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+  .pub{
+    display:grid;grid-template-columns:76px minmax(0,1fr);
+    gap:6px 24px;align-items:baseline;
+    padding-block:22px;border-bottom:1px solid var(--rule-soft);
+  }
+  .pub:last-child{border-bottom:0}
+  .pub-yr{
+    font-family:var(--f-mono);font-size:12.5px;color:var(--ink-3);
+    font-variant-numeric:tabular-nums;letter-spacing:0.04em;
+  }
+  .pub-body{display:flex;flex-direction:column;gap:6px;min-width:0}
+  .pub-title{
+    font-family:var(--f-display);font-weight:600;
+    font-size:clamp(16.5px,1.8vw,19px);line-height:1.34;
+    color:var(--ink);text-decoration:none;
+    border-bottom:1.5px solid var(--rule);width:fit-content;max-width:100%;
+    padding-bottom:2px;text-wrap:balance;
+  }
+  .pub-title:hover{border-bottom-color:var(--accent)}
+  .pub-src{font-family:var(--f-mono);font-size:11.5px;color:var(--ink-3);letter-spacing:0.03em;line-height:1.6}
+  .pub-src em{font-style:normal;color:var(--brand-soft)}
+
+  /* ---------- about ---------- */
+  .about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(20px,4vw,56px)}
+  .about .body{max-width:var(--measure);color:var(--ink-2)}
+  .about .body p + p{margin-top:15px}
+  .about .body strong{color:var(--ink);font-weight:600}
+
+  /* ---------- contact ---------- */
+  .contact-in{
+    display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
+    gap:28px;
+  }
+  .contact-in h2{font-size:clamp(24px,3.2vw,36px);max-width:16ch}
+  .contact-in .to{display:flex;flex-direction:column;gap:6px}
+  .contact-in a.mail{
+    font-family:var(--f-display);font-weight:600;font-size:clamp(17px,2vw,21px);
+    color:var(--brand);text-decoration:none;border-bottom:2px solid var(--accent);
+    padding-bottom:2px;width:fit-content;
+  }
+
+  /* ---------- footer ---------- */
+  footer{padding-block:38px 46px;background:var(--surface-2)}
+  .foot-in{display:flex;flex-wrap:wrap;gap:24px 48px;justify-content:space-between;align-items:flex-start}
+  .foot-brands{display:flex;flex-wrap:wrap;gap:10px 30px}
+  .foot-brands a{
+    font-family:var(--f-mono);font-size:12px;color:var(--ink-2);text-decoration:none;
+    border-bottom:1px solid var(--rule);padding-bottom:2px;
+  }
+  .foot-brands a:hover{color:var(--ink);border-bottom-color:var(--accent)}
+  .foot-legal{font-family:var(--f-mono);font-size:11px;color:var(--ink-3);line-height:1.8}
+
+  @media (max-width:760px){
+    .sec-head,.item,.about{grid-template-columns:1fr}
+    .pub{grid-template-columns:1fr;gap:8px}
+    .sec-head h2{margin-top:6px}
+    .hero h1{max-width:none}
+  }
+</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="mark" href="#top">
+      <svg class="mark-glyph" viewBox="0 0 325 200" aria-hidden="true" fill="currentColor">
+        <rect x="0" y="186" width="325" height="14" rx="1"/>
+        <rect x="17.5" y="118" width="13" height="68" rx="1"/>
+        <rect x="61.5" y="118" width="13" height="68" rx="1"/>
+        <rect x="105.5" y="118" width="13" height="68" rx="1"/>
+        <rect x="156" y="2" width="13" height="184" rx="1"/>
+        <rect x="206.5" y="118" width="13" height="68" rx="1"/>
+        <rect x="250.5" y="118" width="13" height="68" rx="1"/>
+        <rect x="294.5" y="118" width="13" height="68" rx="1"/>
+      </svg>
+      <span class="mark-txt">Baseline <span>Awareness</span></span>
+    </a>
+    <nav class="top" aria-label="Primary">
+      <a href="#training">Training</a>
+      <a href="#technology">Technology</a>
+      <a href="#writing">Publications</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div class="hero-lockup">
+        <svg class="hero-glyph" viewBox="0 0 325 200" aria-hidden="true" fill="currentColor">
+          <rect x="0" y="186" width="325" height="14" rx="1"/>
+          <rect x="17.5" y="118" width="13" height="68" rx="1"/>
+          <rect x="61.5" y="118" width="13" height="68" rx="1"/>
+          <rect x="105.5" y="118" width="13" height="68" rx="1"/>
+          <rect x="156" y="2" width="13" height="184" rx="1"/>
+          <rect x="206.5" y="118" width="13" height="68" rx="1"/>
+          <rect x="250.5" y="118" width="13" height="68" rx="1"/>
+          <rect x="294.5" y="118" width="13" height="68" rx="1"/>
+        </svg>
+        <p class="eyebrow">Baseline Awareness LLC</p>
+        <p class="glyph-note">A known field. One departure — immediately apparent.</p>
+      </div>
+      <h1>Raise the baseline.<br>Enhance readiness.</h1>
+      <p class="lede">Understanding the baseline is what makes the thing that doesn't belong stand out — situational awareness rests on it entirely. We build the training and the technology that raise it.</p>
+      <div class="hero-meta">
+        <span><b>Two practices</b> — Training &amp; Technology</span>
+        <span><b>Serving</b> schools, law enforcement, and the agencies that support them</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="training">
+    <div class="wrap sec">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Practice</p>
+          <h2>Training</h2>
+        </div>
+        <p class="blurb">Programs built to save lives by preventing violence and enhancing response. Available as SCORM-compliant e-learning that drops into the LMS you already run.</p>
+      </div>
+
+      <div class="items">
+
+        <article class="item">
+          <div class="item-id">
+            <h3>First Officer Engage</h3>
+            <span class="tag live">Available</span>
+            <span class="spec">SCORM e-learning</span>
+          </div>
+          <div>
+            <p>Active-shooter response training for the first officer on scene. The program treats arrival as the decisive moment and provides the stress inoculation tools required to act.</p>
+          </div>
+        </article>
+
+        <article class="item">
+          <div class="item-id">
+            <h3>Behavioral Threat Assessment with Digital Forensics</h3>
+            <span class="tag live">Available</span>
+            <span class="spec">SCORM e-learning</span>
+          </div>
+          <div>
+            <p>Threat assessment teams typically fail to gain access to the information most relevant to determining dangerousness. The information on the student's phone. This program covers how to bring that material into a BTA process lawfully — under consent or court order — and how to read it against established assessment models.</p>
+            <p>The boundaries are the curriculum, not a footnote to it: what may be examined, under what authority, and where the process stops.</p>
+          </div>
+        </article>
+
+        <article class="item">
+          <div class="item-id">
+            <h3>ACT</h3>
+            <span class="dom">Assess · Choose · Tell</span>
+            <span class="tag">In development</span>
+          </div>
+          <div>
+            <p>A civilian response protocol built as a sequence: assess, then choose, then tell. Three steps in order rather than a set of actions to recall under pressure.</p>
+            <ol class="steps">
+              <li>
+                <span class="step-w">Assess</span>
+                <span class="step-d">Before you can determine the best response, you have to assess the situation.</span>
+              </li>
+              <li>
+                <span class="step-w">Choose</span>
+                <span class="step-d">Lockdown, evacuation, or resistance — the option that fits where you actually are. ACT integrates with the protocols a district already runs, including Standard Response Protocol and Run-Hide-Fight.</span>
+              </li>
+              <li>
+                <span class="step-w">Tell</span>
+                <span class="step-d">Alert others nearby, contact 911, and assist responders as they arrive.</span>
+              </li>
+            </ol>
+            <p>ACT provides age-appropriate solutions for pre-K through 12, and emphasizes situational awareness and repetition over high-stress scenarios.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="technology">
+    <div class="wrap sec">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Practice</p>
+          <h2>Technology</h2>
+        </div>
+        <p class="blurb">Purpose-built tools to enhance readiness and improve response. Practical scope, honest data handling, no surveillance by default.</p>
+      </div>
+
+      <div class="items">
+
+        <article class="item">
+          <div class="item-id">
+            <h3>SAMAP</h3>
+            <span class="dom">samap.ai</span>
+            <span class="tag">In development</span>
+          </div>
+          <div>
+            <p>Situational Awareness Map. Upload an aerial photo and a floor plan, drag them into alignment, and drop in labeled points — entrances, staging areas, command posts, hazards, rally points. Export a single PDF a responder can read on a hood.</p>
+            <p>A Smart Grid overlay gives every location a shared reference, so the map and the radio traffic agree.</p>
+
+            <div class="excerpt">
+              <p class="eyebrow">The Origin of SAMAP</p>
+              <p>On October 19, 2000, I was on the Governor's Detail working with the US Secret Service Advance Team, ahead of a visit from President Bill Clinton and Vice President Al Gore. POTUS and VPOTUS were coming to attend the funeral of Missouri Governor Mel Carnahan, who had died days earlier along with his son Randy and aide Chris Sifford in a plane crash.</p>
+              <p>During that advance, I was introduced to the concept of applying a grid reference to an image — a way of breaking a physical space down into referenceable coordinates so that anyone communicating about that space could point to the exact same location without ambiguity.</p>
+              <a class="keep-reading" href="origin.html">Keep reading →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="item">
+          <div class="item-id">
+            <h3>Online Tabletop Exercise</h3>
+            <span class="tag">In development</span>
+          </div>
+          <div>
+            <p>A browser-based platform for building, delivering and reporting tabletop exercises. The builder follows the Homeland Security Exercise and Evaluation Program (HSEEP) framework.</p>
+            <p>In delivery, the facilitator runs a presenter view and screen-shares it through whatever meeting tool they choose. The platform captures decisions and discussion as the exercise runs and builds the after action report.</p>
+            <p>Loaded with a robust scenario library, including behavioral threat assessment scenarios, rather than an empty builder.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="writing">
+    <div class="wrap sec">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Record</p>
+          <h2>Publications</h2>
+        </div>
+        <p class="blurb">Published work in the trade and academic press on response behavior, situational awareness, and what schools should actually train their staff to do.</p>
+      </div>
+
+      <ol class="pubs">
+        <li class="pub">
+          <span class="pub-yr">2026</span>
+          <div class="pub-body">
+            <a class="pub-title" href="origin.html">The Origin of SAMAP</a>
+            <span class="pub-src">Baseline Awareness</span>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="pub-yr">2026</span>
+          <div class="pub-body">
+            <a class="pub-title" href="https://www.police1.com/active-shooter/improving-the-probability-of-courage-in-active-shooter-response" target="_blank" rel="noopener">Improving the probability of courage in active shooter response</a>
+            <span class="pub-src">Police1</span>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="pub-yr">2024</span>
+          <div class="pub-body">
+            <a class="pub-title" href="https://www.asisonline.org/security-management-magazine/articles/2024/01/extremism/options-based-responses-to-violent-threats/" target="_blank" rel="noopener">Options-Based Responses to Violent Threats Against Schools</a>
+            <span class="pub-src">Security Management — ASIS International</span>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="pub-yr">2022</span>
+          <div class="pub-body">
+            <a class="pub-title" href="https://www.asisonline.org/security-management-magazine/articles/2022/09/how-to-improve-your-situational-awareness/" target="_blank" rel="noopener">How to Improve Your Situational Awareness</a>
+            <span class="pub-src">Security Management — ASIS International</span>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="pub-yr">2018</span>
+          <div class="pub-body">
+            <a class="pub-title" href="https://hstalks.com/article/2472/the-role-of-unarmed-security-in-active-killer-defe/" target="_blank" rel="noopener">The role of unarmed security in active killer defence</a>
+            <span class="pub-src">Journal of Business Continuity &amp; Emergency Planning, Vol. 12, No. 1 <em>· Peer-reviewed</em></span>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap sec">
+      <div class="about">
+        <div>
+          <p class="eyebrow">About</p>
+          <h2 style="font-size:clamp(23px,2.9vw,33px);margin-top:12px">Baseline Awareness</h2>
+        </div>
+        <div class="body">
+          <p>Baseline Awareness is a public-safety research and development firm. We build the training and the tools, and we use them ourselves before we sell them.</p>
+          <p>The firm was founded by <strong>Brad Spicer</strong>, who helped pioneer cloud-based emergency planning, active-shooter response training, and tactical site mapping. The company he bootstrapped was acquired by private equity and became one of the largest school safety providers in the country.</p>
+          <p>Baseline Awareness is helping solve the next set of problems.</p>
+          <p>Based in Tampa, Florida. Working nationally.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap sec contact-in">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2 style="margin-top:12px">Tell us what you're trying to solve.</h2>
+      </div>
+      <div class="to">
+        <p class="eyebrow">General inquiries</p>
+        <a class="mail" href="mailto:info@baseaware.com">info@baseaware.com</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <div>
+      <p class="eyebrow" style="margin-bottom:12px">Baseline Awareness brands</p>
+      <div class="foot-brands">
+        <span class="brand-soon">SAMAP — samap.ai</span>
+        <a href="https://diewellhq.com">Die Well — diewellhq.com</a>
+      </div>
+    </div>
+    <p class="foot-legal">
+      © 2026 Baseline Awareness LLC<br>
+      baseaware.com
+    </p>
+  </div>
+</footer>
+</body>
+</html>
