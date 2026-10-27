@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calm Is an Ability</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap">
+<style>
+
+  :root{
+    --ground:#F4F3F0;
+    --surface:#FBFAF8;
+    --surface-2:#EDECE8;
+    --ink:#16191C;
+    --ink-2:#4C5254;
+    --ink-3:#7C8181;
+    --rule:#D0CEC8;
+    --rule-soft:#E6E4DE;
+    --brand:#3D6A68;
+    --accent:#3D6A68;
+    --focus:#3D6A68;
+
+    --f-display:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+    --f-body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+    --f-mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+
+    --gutter:clamp(20px,5vw,72px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#16191C;
+      --surface:#1C2023;
+      --surface-2:#1A1E21;
+      --ink:#E8E6E0;
+      --ink-2:#BFBDB8;
+      --ink-3:#8B9191;
+      --rule:#383D40;
+      --rule-soft:#282D30;
+      --brand:#7FB0AD;
+      --accent:#7FB0AD;
+      --focus:#7FB0AD;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#16191C;
+    --surface:#1C2023;
+    --surface-2:#1A1E21;
+    --ink:#E8E6E0;
+    --ink-2:#BFBDB8;
+    --ink-3:#8B9191;
+    --rule:#383D40;
+    --rule-soft:#282D30;
+    --brand:#7FB0AD;
+    --accent:#7FB0AD;
+    --focus:#7FB0AD;
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--ground);color:var(--ink);
+    font-family:var(--f-body);font-size:17.5px;line-height:1.68;
+    font-weight:400;-webkit-font-smoothing:antialiased;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  img{max-width:100%}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:2px}
+
+  .wrap{max-width:1140px;margin:0 auto;padding-inline:var(--gutter)}
+  .eyebrow{
+    font-family:var(--f-mono);font-size:11px;font-weight:500;
+    letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);margin:0;
+  }
+
+  /* header */
+  .site-head{
+    position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+    background:color-mix(in srgb,var(--ground) 92%, transparent);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--rule-soft);
+  }
+  .head-in{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:66px;flex-wrap:wrap}
+  .mark{display:flex;align-items:center;gap:13px;text-decoration:none;padding-block:12px;color:var(--ink)}
+  .mark-glyph{width:34px;height:auto;flex:none;display:block}
+  .mark-txt{font-family:var(--f-display);font-weight:400;font-size:15.5px;letter-spacing:-0.005em}
+  .mark-txt b{font-weight:700}
+  .back{
+    font-family:var(--f-display);font-size:14px;font-weight:500;text-decoration:none;
+    color:var(--ink-2);padding-block:4px;border-bottom:1.5px solid transparent;
+  }
+  .back:hover{color:var(--ink);border-bottom-color:var(--accent)}
+
+  /* article */
+  article{padding-block:clamp(44px,7vw,84px) clamp(48px,7vw,96px)}
+  .measure{max-width:70ch;margin:0 auto}
+  h1{
+    font-family:var(--f-display);font-weight:600;
+    font-size:clamp(30px,4.6vw,50px);line-height:1.1;letter-spacing:-0.02em;
+    text-wrap:balance;margin:16px 0 0;
+  }
+  .byline{
+    display:flex;flex-wrap:wrap;gap:6px 20px;align-items:baseline;
+    margin-top:26px;padding-top:18px;border-top:1px solid var(--rule);
+    font-family:var(--f-mono);font-size:12px;color:var(--ink-3);letter-spacing:0.03em;
+  }
+  .byline b{color:var(--ink-2);font-weight:500}
+
+  .body{margin-top:clamp(28px,4vw,44px)}
+  .body p{margin:0 0 1.15em}
+  .body p:last-child{margin-bottom:0}
+  .body p.lead{font-size:1.06em}
+  .body em{font-style:italic}
+
+  .standout{
+    margin:1.9em 0;padding:0 0 0 22px;
+    border-left:2px solid var(--accent);
+    font-size:1.12em;line-height:1.5;color:var(--ink);
+    font-weight:500;text-wrap:balance;
+  }
+
+  .endnote{
+    margin-top:clamp(34px,4vw,48px);padding-top:22px;
+    border-top:1px solid var(--rule);
+    font-family:var(--f-mono);font-size:12px;color:var(--ink-3);
+    display:flex;flex-wrap:wrap;gap:8px 26px;
+  }
+  .endnote a{color:var(--brand);text-decoration:none;border-bottom:1px solid var(--rule)}
+  .endnote a:hover{border-bottom-color:var(--accent)}
+
+  footer{padding-block:34px 42px;background:var(--surface-2);margin-top:0}
+  .foot-in{display:flex;flex-wrap:wrap;gap:20px 48px;justify-content:space-between;align-items:flex-start}
+  .foot-legal{font-family:var(--f-mono);font-size:11px;color:var(--ink-3);line-height:1.8}
+  .foot-back{font-family:var(--f-mono);font-size:12px;color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:2px}
+  .foot-back:hover{color:var(--ink);border-bottom-color:var(--accent)}
+
+
+  .hero-img{width:100%;height:auto;display:block;border-radius:2px;margin:0 0 clamp(26px,3.5vw,38px);border:1px solid var(--rule-soft);}
+  .kicker{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--brand);margin:0 0 4px;}
+  .srcnote{margin-top:clamp(30px,4vw,42px);padding:18px 0 0;border-top:1px solid var(--rule);font-size:14.5px;line-height:1.6;color:var(--ink-3);}
+  .srcnote em{font-style:italic}
+  .cases{list-style:none;margin:1.7em 0;padding:0;border-top:1px solid var(--rule);}
+  .cases li{display:grid;grid-template-columns:78px 1fr;gap:4px 22px;padding:15px 0;border-bottom:1px solid var(--rule-soft);align-items:baseline;}
+  .cases li:last-child{border-bottom:0}
+  .case-yr{font-family:var(--f-mono);font-size:13px;font-weight:500;color:var(--brand);letter-spacing:0.04em;}
+  .case-txt{margin:0;font-size:0.97em;line-height:1.62;}
+  .case-txt b{font-weight:600;color:var(--ink);}
+  @media (max-width:560px){.cases li{grid-template-columns:1fr;gap:5px}}
+  .voices{list-style:none;margin:1.7em 0;padding:0;}
+  .voices li{padding:11px 0 11px 22px;border-left:2px solid var(--rule);margin-bottom:2px;}
+  .voices li:hover{border-left-color:var(--accent)}
+  .voices b{font-weight:600}
+  .closer{margin-top:1.6em;font-family:var(--f-display);font-size:1.28em;font-weight:600;line-height:1.3;letter-spacing:-0.01em;color:var(--ink);text-wrap:balance;}
+
+  .deckbox{margin:1.6em 0;padding:20px 22px;background:var(--surface-2);border-left:2px solid var(--accent);border-radius:2px}
+  .deckbox p{margin:0;font-size:15.5px;line-height:1.62;color:var(--ink-2)}
+  .tbl{width:100%;border-collapse:collapse;margin:1.8em 0;font-size:15px;line-height:1.55}
+  .tbl th{text-align:left;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--ink-3);padding:0 14px 10px 0;border-bottom:1px solid var(--rule)}
+  .tbl td{padding:15px 14px 15px 0;border-bottom:1px solid var(--rule-soft);vertical-align:top;color:var(--ink-2)}
+  .tbl td:first-child,.tbl td:nth-child(2){white-space:nowrap;color:var(--ink);font-weight:500}
+  .tbl th:last-child,.tbl td:last-child{padding-right:0}
+  @media (max-width:620px){
+    .tbl,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}
+    .tbl thead{display:none}
+    .tbl tr{padding:14px 0;border-bottom:1px solid var(--rule-soft)}
+    .tbl td{border:0;padding:2px 0}
+    .tbl td:first-child{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);font-weight:500}
+  }
+  .refs{list-style:none;margin:1.1em 0 0;padding:0;counter-reset:ref}
+  .refs li{position:relative;padding:0 0 0 30px;margin-bottom:11px;font-size:14px;line-height:1.55;color:var(--ink-3)}
+  .refs li::before{counter-increment:ref;content:counter(ref);position:absolute;left:0;top:1px;
+    font-family:var(--f-mono);font-size:11px;color:var(--brand)}
+  .refs em{font-style:italic}
+  h2{font-family:var(--f-display);font-weight:600;font-size:clamp(20px,2.4vw,26px);line-height:1.18;
+    letter-spacing:-0.015em;margin:1.9em 0 .55em;color:var(--ink);text-wrap:balance}
+  h3{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+     color:var(--ink-3);margin:2.4em 0 0;padding-top:18px;border-top:1px solid var(--rule)}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="mark" href="index.html">
+      <svg class="mark-glyph" viewBox="0 0 289.45 187.11" aria-hidden="true" fill="currentColor"><rect x="0" y="175.43" width="289.45" height="11.68"/><rect x="0" y="105.27" width="14.61" height="58.48"/><rect x="52.61" y="105.27" width="14.65" height="58.48"/><rect x="105.27" y="105.27" width="14.61" height="58.48"/><rect x="178.36" y="0" width="14.61" height="163.75"/><rect x="222.22" y="105.27" width="14.61" height="58.48"/><rect x="274.84" y="105.27" width="14.61" height="58.48"/></svg>
+      <span class="mark-txt"><b>Base</b>line <b>Aware</b>ness</span>
+    </a>
+    <a class="back" href="index.html">← Back to baseaware.com</a>
+  </div>
+</header>
+
+<main>
+  <article class="wrap">
+    <div class="measure">
+      <p class="kicker">ARC</p>
+      <p class="eyebrow">Field Note</p>
+      <h1>Calm Is an Ability</h1>
+      <p class="byline">
+        <span><b>Brad Spicer</b></span>
+        <span>Published October 27, 2026</span>
+      </p>
+
+      <div class="body">
+        <p class="lead">&ldquo;Remain calm&rdquo; is the most common instruction in emergency response and one of the least trained. This piece makes the case that calm is a skill with a physiological basis, and shows how ARC trains it for K-12 teachers and students without exposing either group to trauma.</p>
+
+        <p>Nearly every school emergency protocol tells people to remain calm. Almost none explain why panic happens or train the skill of getting past it.</p>
+
+        <div class="deckbox">
+          <p><strong>ARC &mdash; Assess, Respond, Communicate</strong> is Baseline Awareness&rsquo;s civilian emergency response protocol for K-12 schools. Assess means reading the situation before choosing a response. Respond covers building-wide protocols (evacuation, heightened security, lockdown, shelter in place) and individual classroom options (Evade, Lockdown, Resist), and is built to integrate with a district&rsquo;s existing protocols rather than replace them. Communicate means notifying everyone who needs to know, in the order it matters: others nearby, a building- or campus-wide alert, 911, the district office, and parents. It provides age-appropriate versions of all three steps from pre-K through 12.</p>
+        </div>
+
+        <h2>The instruction nobody teaches</h2>
+        <p>The missing explanation matters because &ldquo;stay calm&rdquo; treats calm as a choice. It assumes the person hearing it can simply decide to comply. Under real threat, that assumption fails, and it fails for physiological reasons, not for lack of effort or character.</p>
+
+        <h2>What panic actually is</h2>
+        <p>Fear is information. It tells a person something is wrong and sharpens attention. Panic is what happens when the body&rsquo;s stress response overruns the brain&rsquo;s ability to process it. When a threat is perceived as life-threatening and uncontrollable, a sympathetic nervous system surge drives heart rate sharply upward. For many people, cognitive breakdown clusters somewhere around 175 beats per minute, though the exact number varies by person and context.</p>
+        <p>Past that point the effects are predictable: cognitive narrowing, loss of fine motor control, tunnel vision, auditory exclusion, and impaired executive function, the capacity to reason and choose deliberately. A panicking person is not ignoring instructions. The part of the brain that follows instructions has gone partly offline.</p>
+        <p>This is the old Yerkes-Dodson finding. Moderate stress sharpens performance, and past a threshold, performance collapses. The threshold is not fixed. It arrives sooner when a situation is unfamiliar and later when it is familiar and rehearsed. That is the opening for training: the goal is not to remove fear, but to push the point of collapse further out.</p>
+
+        <h2>Calm has a physiological signature</h2>
+        <p>Calm is not just a feeling. It has a measurable marker in heart rate variability (HRV), the beat-to-beat variation that reflects how well the nervous system can shift between activation and recovery. Research on HRV biofeedback, summarized in Lehrer and Gevirtz&rsquo;s widely cited review, shows that slow, regulated breathing at a resonance frequency strengthens the baroreflex, one of the body&rsquo;s built-in regulators of heart rate and blood pressure. With repeated practice, people get better at it.</p>
+        <p class="standout">That changes what &ldquo;remain calm&rdquo; actually asks of someone. It is not a personality instruction and it is not willpower. It is a practiced ability, closer to a physical skill than a temperament: it strengthens with repetition and fades without it.</p>
+
+        <h2>Why not train it with simulated violence</h2>
+        <p>In some settings, stress tolerance is built through graduated physical exposure. Airborne School spends three weeks building to five jumps. BUD/S spends months building to Hell Week. Those programs select, screen, and enlist people who consent to that exposure as a condition of service.</p>
+        <p>Schools have sometimes borrowed that logic, running drills with role-played intruders or simulated gunfire. The evidence on cost is now substantial. A 2021 Georgia Tech study, with Everytown Research, analyzed roughly 28 million social media posts from accounts tied to 114 schools in 33 states, in the 90 days before and after drills. It found a 42% increase in posts indicating stress and anxiety and a roughly 39% increase in depression indicators, sustained for at least 90 days. In Everytown&rsquo;s companion report on the same data, posts referencing physiological health problems rose 23%. The effect was largest among high schoolers.</p>
+        <p>The study pooled drill types and did not isolate high-intensity drills from standard lockdown practice. Separate guidance is more specific: NASP, NASRO, and Safe and Sound Schools advise against high-intensity, hyperrealistic, or sensorial drills involving students and staff, and recommend that drills never be unannounced. Everytown, the AFT, and the NEA likewise recommend against simulations that mimic an actual incident.</p>
+        <p>The argument is also practical for teachers. They were hired to teach, not to absorb occupational exposure to simulated violence. High-stress formats add the risk of psychological injury, which can surface as workers&rsquo; compensation claims or grievances, and the profession broadly does not accept them. A training format the workforce will not sustain tends to stop being run. For this population, whatever gain a high-stress format offers does not outweigh that cost.</p>
+
+        <h2>How calm is trained instead</h2>
+        <p>Not using physical exposure does not mean not using stress training. Donald Meichenbaum developed Stress Inoculation Training (SIT) in the 1980s as a cognitive-behavioral approach: psychoeducation, breathing and relaxation training, self-talk, cognitive restructuring, and mental rehearsal. A meta-analysis conducted for the Navy found SIT effective for reducing performance anxiety and state anxiety and for improving performance under stress, with no significant limitation tied to experience level, setting, or population. That finding matters here because a school building contains ordinary people, not a pre-selected group.</p>
+        <p>ARC applies SIT&rsquo;s three-phase structure to the skill of staying regulated:</p>
+
+        <table class="tbl">
+          <thead>
+            <tr><th>SIT phase</th><th>ARC step</th><th>The calm skill it builds</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Conceptualization</td><td>Assess</td><td>Understand what panic is and what it does, so the body&rsquo;s reaction is recognized, not feared. Practice orienting to the situation.</td></tr>
+            <tr><td>Skills acquisition and rehearsal</td><td>Respond</td><td>Rehearse breathing and a pre-decided response through repetition at low stress, so the response is familiar before it is needed.</td></tr>
+            <tr><td>Application</td><td>Communicate</td><td>Execute a known notification sequence while the body is still activated.</td></tr>
+          </tbody>
+        </table>
+
+        <p>SIT supplies the architecture. ARC&rsquo;s emphasis on situational awareness and repetition, rather than high-stress scenarios, is how that architecture reaches a classroom.</p>
+
+        <h2>Assess is the entry point, not the ceiling</h2>
+        <p>Calm is introduced under Assess because accurate assessment is the first thing panic degrades. Cognitive narrowing shrinks what a person can notice and weigh, so a person cannot assess well until the nervous system doing the assessing is regulated.</p>
+        <p>But it cannot stop there. A calm Assess followed by a panicked Respond is still a failure. And Communicate is where the loss is easiest to miss, because Communicate is not one action. It is a list: alert people nearby, trigger the building- or campus-wide system, call 911, notify the district office, notify parents. Under panic, a list like that is exactly what cognitive narrowing deletes from. The tool exists. The stressed mind stops seeing it as available.</p>
+        <p>The independent after-action report on the September 2025 assassination of Charlie Kirk at Utah Valley University documents the pattern. The university had systems for an immediate active-shooter alert, and reviewers concluded one should have been activated. No immediate campus alert was sent. The first broad notification went out roughly 19 minutes after the shooting and told the campus a suspect was in custody, which was not the shooter. That is not a story about missing infrastructure. It is a story about people under real stress not executing tools they already had.</p>
+
+        <h2>The right tool, not a compromise</h2>
+        <p>It is tempting to treat cognitive-only training as the fallback for populations that cannot do the real thing. Aviation shows why that framing is backwards. Airline pilots train for stall and upset recovery largely in simulators under FAA- and EASA-mandated Upset Prevention and Recovery Training. Regulators do not treat the simulator as a watered-down substitute; they treat it as the correct way to build that skill, because repeatedly inducing real upsets in aircraft would be reckless.</p>
+        <p>Schools are in the same position. The aim was never to replicate a selection pipeline inside a school building. It was to raise the chance that a student or teacher stays regulated enough to assess, respond, and communicate. For this population, that is the correctly sized goal.</p>
+
+        <h2>Conclusion</h2>
+        <p>&ldquo;Remain calm&rdquo; will stay in every emergency plan, and it should. What needs to change is that it stops being a command and becomes something people have actually practiced. Panic is physiology, not failure of effort.</p>
+        <p class="closer">Calm is an ability, with a physiological basis and a body of training research behind it. ARC trains it where the research supports it, without asking a classroom to absorb what a training pipeline is built to absorb instead.</p>
+
+        <h3>Sources</h3>
+        <ol class="refs">
+          <li>ElSherief, M., Saha, K., Gupta, P., Mishra, S., Seybolt, J., Xie, J., O&rsquo;Toole, M., Burd-Sharps, S., &amp; De Choudhury, M. (2021). Impacts of school shooter drills on the psychological well-being of American K&ndash;12 school communities: A social media study. <em>Humanities and Social Sciences Communications</em>, 8, 315.</li>
+          <li>Everytown Research &amp; Georgia Tech Social Dynamics and Wellbeing Lab. (2020). The impact of active shooter drills in schools. Everytown for Gun Safety Support Fund.</li>
+          <li>Everytown for Gun Safety, American Federation of Teachers, &amp; National Education Association. (2020). Keeping our schools safe: A plan to stop mass shootings and end gun violence in American schools.</li>
+          <li>National Association of School Psychologists, National Association of School Resource Officers, &amp; Safe and Sound Schools. Best practice guidance for school safety and lockdown drills.</li>
+          <li>Meichenbaum, D. (1985). <em>Stress Inoculation Training</em>. Pergamon Press.</li>
+          <li>Saunders, T., Driskell, J. E., Johnston, J. H., &amp; Salas, E. (1996). The effect of stress inoculation training on anxiety and performance. <em>Journal of Occupational Health Psychology</em>, 1(2), 170&ndash;186.</li>
+          <li>Lehrer, P. M., &amp; Gevirtz, R. (2014). Heart rate variability biofeedback: How and why does it work? <em>Frontiers in Psychology</em>, 5, 756.</li>
+          <li>Federal Aviation Administration. Advisory Circular 120-111, Upset Prevention and Recovery Training.</li>
+          <li>Lake Forest Group. Independent after-action review of the September 10, 2025 shooting of Charlie Kirk at Utah Valley University, released September 25, 2026.</li>
+        </ol>
+      </div>
+
+      <div class="endnote">
+        <span>Baseline Awareness LLC</span>
+        <a href="index.html#training">More on ARC</a>
+      </div>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <a class="foot-back" href="index.html">← baseaware.com</a>
+    <p class="foot-legal">
+      © 2026 Baseline Awareness LLC<br>
+      baseaware.com
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
